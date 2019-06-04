@@ -1,6 +1,6 @@
-h1 {
+#title {
     font-weight: bold;
-    font-size: 50px;
+    font-size: 30px;
 }
 
 
@@ -30,6 +30,8 @@ h1 {
     height: 30px;
     font-weight: bolder;
     text-align: center;
+    background-color:#64d9ad80;
+    border: none;
 }
 #randomNumber {
     background-color:white;
@@ -40,9 +42,9 @@ h1 {
     text-align: center;
 }
 #score {
-    background-color:teal;
+    background-color:#02793085;
     width:100px;
-    height: 50px;
+    height: 40px;
     font-size: 40px;
     font-weight: bolder;
     text-align: center;
