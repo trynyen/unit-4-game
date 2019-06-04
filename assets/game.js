@@ -11,11 +11,11 @@ var greenCrystal;
 
 //Set a random number each time the game is reset
 function random(){
-    numRandom = Math.floor(Math.random()*100)+20;
-    redCrystal = Math.floor(Math.random()*10);  
-    blueCrystal = Math.floor(Math.random()*10); 
-    yellowCrystal = Math.floor(Math.random()*10); 
-    greenCrystal = Math.floor(Math.random()*10); 
+    numRandom = Math.floor(Math.random()*100)+21;
+    redCrystal = Math.floor(Math.random()*10)+1;  
+    blueCrystal = Math.floor(Math.random()*10)+1; 
+    yellowCrystal = Math.floor(Math.random()*10)+1; 
+    greenCrystal = Math.floor(Math.random()*10)+1; 
 }
 
 //When reset, random funtion is run and value is set to the new random value
@@ -24,10 +24,10 @@ function reset(){
     totalScore = 0;
     $("#score").text(totalScore);
     $("#randomNumber").text(numRandom);
-    $("#red").attr(redCrystal);
-    $("#blue").attr(blueCrystal);
-    $("#yellow").attr(yellowCrystal);
-    $("#green").attr(greenCrystal);
+    $("#red").attr("data-value", redCrystal);
+    $("#blue").attr("data-value", blueCrystal);
+    $("#yellow").attr("data-value", yellowCrystal);
+    $("#green").attr("data-value", greenCrystal);
     $("#wins").text("Wins" + wins);
     $("#losses").text("Losses" + losses);
 }
@@ -50,11 +50,8 @@ reset();
 
 //When one of crystal buttons are clicked, total score is the total value of 4 crystals
 $(".crystal").on("click", function (){
-    var redCryst = parseInt(redCrystal);
-    var blueCryst = parseInt(blueCrystal);
-    var yellowCryst = parseInt(yellowCrystal);
-    var greenCryst = parseInt(greenCrystal);
-    totalScore = redCryst + blueCryst + yellowCryst + greenCryst;
+    var datavalue = parseInt($(this).attr("data-value"));
+    totalScore = datavalue;
     $("#score").text(totalScore); 
 
 //If score equals current random number, we win: win function is called, game is reset
