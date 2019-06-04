@@ -3,26 +3,27 @@ $(document).ready(function() {
 var totalScore = 0;
 var wins = 0;
 var losses = 0;
-var buttonRandom;
+var numRandom;
 var redCrystal;
 var blueCrystal;
 var yellowCrystal;
 var greenCrystal;
 
-
+//Set a random number each time the game is reset
 function random(){
-    buttonRandom = Math.floor(Math.random()*100)+20;
+    numRandom = Math.floor(Math.random()*100)+20;
     redCrystal = Math.floor(Math.random()*10);  
     blueCrystal = Math.floor(Math.random()*10); 
     yellowCrystal = Math.floor(Math.random()*10); 
     greenCrystal = Math.floor(Math.random()*10); 
 }
 
+//When reset, random funtion is run and value is set to the new random value
 function reset(){
     random();
     totalScore = 0;
-    $("#score").text(totalScore)
-    $("#randomNumber").text(buttonRandom);
+    $("#score").text(totalScore);
+    $("#randomNumber").text(numRandom);
     $("#red").attr(redCrystal);
     $("#blue").attr(blueCrystal);
     $("#yellow").attr(yellowCrystal);
@@ -31,34 +32,35 @@ function reset(){
     $("#losses").text("Losses" + losses);
 }
 
-function youWin(){
+//When win, score goes up and shows on page
+function win(){
     wins++;
-    $("#wins").text(wins);
+    $("#wins").text("Wins:" + wins);
 }
 
-function youLose(){
+//When lose, score goes down and shows on page
+function lose(){
     losses++;
-    $("#losses").text(losses);
+    $("#losses").text("Losses: " + losses);
 }
 
 reset();
 
 $(".crystal").on("click", function (){
-    if ($("#score") <= totalScore){
-        var redCryst = parseInt(redCrystal);
-        var blueCryst = parseInt(blueCrystal);
-        var yellowCryst = parseInt(yellowCrystal);
-        var greenCryst = parseInt(greenCrystal);
-        totalScore = redCryst + blueCryst + yellowCryst + greenCryst;
-        $("#score").text(totalScore); 
-    }
+    var redCryst = parseInt(redCrystal);
+    var blueCryst = parseInt(blueCrystal);
+    var yellowCryst = parseInt(yellowCrystal);
+    var greenCryst = parseInt(greenCrystal);
+    totalScore = redCryst + blueCryst + yellowCryst + greenCryst;
+    $("#score").text(totalScore); 
 
-    else if ($("#score") === totalScore){
-        youWin();
+    if ($("#score") === numRandom){
+        win();
         reset();
     }
-    else {
-        youLose();
+
+    else if ($("#score") > numRandom){
+        lose();
         reset();
     }
     })
