@@ -28,8 +28,8 @@ function reset(){
     $("#blue").attr("data-value", blueCrystal);
     $("#yellow").attr("data-value", yellowCrystal);
     $("#green").attr("data-value", greenCrystal);
-    $("#wins").text("Wins" + wins);
-    $("#losses").text("Losses" + losses);
+    $("#wins").text("Wins: " + wins);
+    $("#losses").text("Losses: " + losses);
 }
 
 //When win, score goes up and logged on page
