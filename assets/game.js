@@ -44,39 +44,15 @@ function youLose(){
 reset();
 
 $(".crystal").on("click", function (){
-    
-    $("#score").text(redCrystal + blueCrystal + yellowCrystal + greenCrystal);
-    if ($("#score") < totalScore){
-        $("#score").text()
-
-        console.log(this);
-  if(!operatorPressed){
-  firstnum = firstnum + $(this).attr("value");
-  console.log(firstnum);
-  $("#first-number").text(firstnum);
-}
-var result = $("#result");
-$(".equal").on("click", function() {
-  var num1 = parseInt(firstnum);
-  var num2 = parseInt(secondnum);
-  if(operator==="plus"){
-    $("#result").text(num1 + num2);
-  } 
-  else if(operator==="minus"){
-    $("#result").text(num1 - num2);
-  }
-
-
-
-
-
- else {
-  secondnum = secondnum + $(this).attr("value");
-  console.log(secondnum);
-  $("#second-number").text(secondnum);
- }
-        
+    if ($("#score") <= totalScore){
+        var redCryst = parseInt(redCrystal);
+        var blueCryst = parseInt(blueCrystal);
+        var yellowCryst = parseInt(yellowCrystal);
+        var greenCryst = parseInt(greenCrystal);
+        totalScore = redCryst + blueCryst + yellowCryst + greenCryst;
+        $("#score").text(totalScore); 
     }
+
     else if ($("#score") === totalScore){
         youWin();
         reset();
