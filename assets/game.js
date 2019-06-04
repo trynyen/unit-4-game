@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    
+//Set variables   
 var totalScore = 0;
 var wins = 0;
 var losses = 0;
@@ -32,20 +32,24 @@ function reset(){
     $("#losses").text("Losses" + losses);
 }
 
-//When win, score goes up and shows on page
+//When win, score goes up and logged on page
 function win(){
     wins++;
     $("#wins").text("Wins:" + wins);
 }
 
-//When lose, score goes down and shows on page
+//When lose, score goes down and logged on page
 function lose(){
     losses++;
     $("#losses").text("Losses: " + losses);
 }
 
+//Reset function is called when page is loaded
 reset();
 
+//When one of crystal buttons are clicked, total score is the total value of 4 crystals
+//If score equals current random number, we win: win function is called, game is reset
+//If score is higher than current random number, we lose: lose function is called, game is reset
 $(".crystal").on("click", function (){
     var redCryst = parseInt(redCrystal);
     var blueCryst = parseInt(blueCrystal);
