@@ -47,9 +47,8 @@ function lose(){
 //Reset function is called when page is loaded
 reset();
 
+
 //When one of crystal buttons are clicked, total score is the total value of 4 crystals
-//If score equals current random number, we win: win function is called, game is reset
-//If score is higher than current random number, we lose: lose function is called, game is reset
 $(".crystal").on("click", function (){
     var redCryst = parseInt(redCrystal);
     var blueCryst = parseInt(blueCrystal);
@@ -58,11 +57,13 @@ $(".crystal").on("click", function (){
     totalScore = redCryst + blueCryst + yellowCryst + greenCryst;
     $("#score").text(totalScore); 
 
+//If score equals current random number, we win: win function is called, game is reset
     if ($("#score") === numRandom){
         win();
         reset();
     }
 
+//If score is higher than current random number, we lose: lose function is called, game is reset
     else if ($("#score") > numRandom){
         lose();
         reset();
