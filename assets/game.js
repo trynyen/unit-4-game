@@ -51,7 +51,8 @@ reset();
 //When one of crystal buttons are clicked, total score is the total value of 4 crystals
 $(".crystal").on("click", function (){
     var datavalue = parseInt($(this).attr("data-value"));
-    totalScore = datavalue;
+    datavalue++;
+    totalScore += datavalue;
     $("#score").text(totalScore); 
 
 //If score equals current random number, we win: win function is called, game is reset
