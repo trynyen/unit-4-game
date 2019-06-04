@@ -35,13 +35,13 @@ function reset(){
 //When win, score goes up and logged on page
 function win(){
     wins++;
-    $("#wins").text("Wins:" + wins);
+    $("#wins").text(wins);
 }
 
 //When lose, score goes down and logged on page
 function lose(){
     losses++;
-    $("#losses").text("Losses: " + losses);
+    $("#losses").text(losses);
 }
 
 //Reset function is called when page is loaded
@@ -56,13 +56,13 @@ $(".crystal").on("click", function (){
     $("#score").text(totalScore); 
 
 //If score equals current random number, we win: win function is called, game is reset
-    if ($("#score") === numRandom){
+    if (totalScore === numRandom){
         win();
         reset();
     }
 
 //If score is higher than current random number, we lose: lose function is called, game is reset
-    else if ($("#score") > numRandom){
+    else if (totalScore > numRandom){
         lose();
         reset();
     }
