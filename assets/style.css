@@ -1,3 +1,9 @@
+h1 {
+    font-weight: bold;
+    font-size: 50px;
+}
+
+
 #red, #blue, #yellow, #green {
     width: 100px;
     height: 100px;
