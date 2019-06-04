@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Calculator</title>
+
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Added a link to Bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <!-- Added a link to our external stylesheet-->
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/reset.css">
+    <script type="text/javascript" src="assets/game.js"></script>
+
+</head>
+<body>
+<h1>CrystalsCollector</h1>
+
+<p>You will be given a random number at the start of the game</p>
+<p>There are 4 crystals below. By clicking on a crystal you will add a specific amount of points to your total score.</p>
+<p>You win the game by matching your total score to random number, you lose the game if your total score goes above the random number</p>
+<p>The value of each crystal is hidden from you until you click on it</p>
+<p>Each time when the game starts, the game will change the values of each crystal</p>
+
+<button id="randomButton">Click here to get a random number </button>
+<div id="randomNumber"></div>
+
+<div id="Stats">Current Stats: </div>
+
+<button id="red" class="crystal number"></button>
+<button id="blue" class="crystal number"></button>
+<button id="yellow" class="crystal number"></button>
+<button id="green" class="crystal number"></button>
+
+<div id="score"></div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+
+var firstnum = "";
+var secondnum = "";
+var operatorPressed = false;
+var operator = "";
+
+$(".number").on("click", function (){
+  console.log(this);
+  if(!operatorPressed){
+  firstnum = firstnum + $(this).attr("value");
+  console.log(firstnum);
+  $("#first-number").text(firstnum);
+}
+ else {
+  secondnum = secondnum + $(this).attr("value");
+  console.log(secondnum);
+  $("#second-number").text(secondnum);
+ }
+});
+
+
+$(".operator").on("click", function (){
+  operator = $(this).attr("value");
+  $("#operator").text($(this).text());
+  operatorPressed = true;
+  console.log(this,"operator");
+});
+
+var result = $("#result");
+$(".equal").on("click", function() {
+  var num1 = parseInt(firstnum);
+  var num2 = parseInt(secondnum);
+  if(operator==="plus"){
+    $("#result").text(num1 + num2);
+  } 
+  else if(operator==="minus"){
+    $("#result").text(num1 - num2);
+  }
+});
+
+$("#button-clear").on("click", function() {
+firstnum = "";
+$("#first-number").text(firstnum);
+secondnum = "";
+$("#second-number").text(secondnum);
+operator = "";
+$("#operator").text(operator);
+result = "";
+$("#result").text(result);
+operatorPressed =false;
+});
+
+
+});
+
+</script>
+
+</body>
+</html>
